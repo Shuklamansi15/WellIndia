@@ -150,7 +150,7 @@ const Footer = () => {
       {/* FIX: Wrap PartnerSection in a centering div (max-w-7xl mx-auto) 
         to ensure it aligns with the rest of the main content.
       */}
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-full mx-auto px-4">
         <PartnerSection />
       </div>
 

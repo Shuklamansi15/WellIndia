@@ -37,8 +37,8 @@ export default function PartnerSection() {
   );
 
   return (
-    <section className="py-16 sm:py-20 font-sans overflow-hidden">
-      <div className="container px-3 items-center sm:px-6 lg:px-8">
+    <section className="w-full py-16 sm:py-20 font-sans overflow-hidden">
+      <div className="container px-3 items-center w-full sm:px-6 lg:px-8">
         {/* HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
           <h3 className="text-xs sm:text-sm font-semibold uppercase tracking-wide text-gray-500">
