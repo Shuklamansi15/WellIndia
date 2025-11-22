@@ -1,0 +1,152 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/*
+ * Theme Code using CSS Variables
+ * This now only contains the LIGHT MODE (Default) definitions.
+ */
+
+/* ----------------------------------------------------------------
+ * 1. LIGHT MODE (Default - All Variables)
+ * Defines the initial values for all custom color and utility variables.
+ * ---------------------------------------------------------------- */
+:root {
+  /* Page Backgrounds (System-wide) */
+  --color-bg-body: #ffffff; /* White */
+  --color-bg-header: #ffffff;
+  --color-bg-card: #f9fafb; /* Light Gray/Off-White */
+
+  /* Primary Colors (System-wide) */
+  --color-text-primary: #1f2937; /* Dark Gray for main text */
+  --color-text-secondary: #6b7280; /* Muted text */
+  --color-brand-primary: #406796; /* WellIndia Blue-Grey */
+  
+  /* Borders and Separators (System-wide) */
+  --color-border: #e5e7eb; /* Light border */
+
+  /* Navigation Link Colors (System-wide) */
+  --color-link-default: #4b5563; /* Gray */
+  --color-link-hover: #406796; /* Brand color on hover */
+
+  /* Custom Component Colors (Used for .service-card, .theme-button) */
+  --theme-primary: #406796;
+  --theme-dark: #325272;
+  --theme-light: #5e86b4;
+  --theme-gradient: linear-gradient(to bottom right, var(--theme-dark), var(--theme-light));
+}
+
+/* ----------------------------------------------------------------
+ * 2. Custom Component Styles
+ * Styles for specific components (e.g., Service Card, Themed Buttons)
+ * ---------------------------------------------------------------- */
+
+/* Base Card Transition and Hover Effect (from CoreServices) */
+.service-card {
+  transition: background 0.5s ease-in-out, transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out, border 0.5s ease-in-out;
+  background-image: none;
+  border-color: var(--theme-primary);
+}
+
+.service-card:hover {
+  background-image: var(--theme-gradient);
+  background-color: var(--theme-dark) !important;
+  border-color: transparent !important;
+}
+
+/* Icon Color inside Card */
+.service-card .theme-text-color {
+  color: var(--theme-primary) !important;
+}
+
+/* Uniform Link/Flex Setup */
+.service-link {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  text-decoration: none; 
+}
+.flex-container .service-card {
+  margin: 0;
+}
+
+/* Custom Themed Button (Matches Card Hover) */
+.theme-button {
+  transition: all 0.5s ease-in-out;
+  border-color: var(--theme-primary) !important;
+  color: var(--theme-primary) !important;
+  background-color: white !important; /* Ensure white background for initial state */
+}
+
+.theme-button:hover {
+  background-image: var(--theme-gradient);
+  background-color: var(--theme-dark) !important;
+  border-color: transparent !important;
+  color: white !important;
+  /* Simulating the hover shadow/scale */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* ----------------------------------------------------------------
+ * 3. Animated Background
+ * Uses theme colors to create a subtle, moving gradient effect.
+ * ---------------------------------------------------------------- */
+
+/* Keyframes for the gradient shift */
+@keyframes themeGradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* The class to apply for the animated background */
+.animated-bg-gradient {
+  /* Use the light and dark theme colors for the animated gradient */
+  background: linear-gradient(-45deg, var(--theme-light), var(--theme-primary), var(--theme-dark));
+  /* Adjust size for a larger, smoother movement */
+  background-size: 400% 400%;
+  /* Apply the animation */
+  animation: themeGradientAnimation 20s ease infinite;
+}
+
+/* Floating Themed Circles */
+.theme-circles {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.theme-circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+  background: radial-gradient(circle, var(--theme-light), var(--theme-dark));
+  animation: floatTheme 25s ease-in-out infinite;
+}
+
+@keyframes floatTheme {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(60px, -40px) scale(1.1);
+  }
+  50% {
+    transform: translate(-50px, 70px) scale(0.9);
+  }
+  75% {
+    transform: translate(30px, 30px) scale(1.05);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.45s ease-out forwards;
+}
