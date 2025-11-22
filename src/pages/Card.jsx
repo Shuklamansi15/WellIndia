@@ -132,7 +132,7 @@ export function ConsultationCard({ onClose }) {
   );
 
   return (
-    <div className="w-full max-w-sm relative mx-auto z-0">
+    <div className="w-full h-auto max-w-sm relative mx-auto z-0">
       {/* Close Button */}
       {onClose && (
         <button
